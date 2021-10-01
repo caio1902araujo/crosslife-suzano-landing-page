@@ -119,11 +119,13 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 	background-repeat: no-repeat;
 	background-position: bottom;
 	background-size: contain;
+	height: 100vh;
+	overflow: hidden;
 }
 
 .introduction > .container{
 	display: grid;
-	grid-template-columns: 2fr  1fr;
+	grid-template-columns: 2fr 1fr;
 	gap: 2.5rem;
 	padding-top: 3.75rem;
 }
