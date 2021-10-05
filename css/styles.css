@@ -58,6 +58,12 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 	line-height: 0.9;
 }
 
+.paragraph{
+	font-size: 1.125rem;
+	color: #B0B2B3;
+	line-height: 1.55;
+}
+
 .button{
 	display: inline-block;
 	font-size: 1.125rem;
