@@ -49,6 +49,15 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 	font-size: 1.875rem;
 }
 
+.subtitle{
+	font-weight: bold;
+	font-size: 1.125rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+	color: #6BE067;
+	line-height: 0.9;
+}
+
 .button{
 	display: inline-block;
 	font-size: 1.125rem;
