@@ -66,6 +66,7 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 	border: none;
 	border-radius: 5px;
 	transition: .2s;
+	cursor: pointer;
 }
 
 .button-primary{
