@@ -243,4 +243,10 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 	background: none;
 	border: none;
 	padding: 10px;
+	
+}
+
+.buttons > button:hover img{
+	filter: grayscale(100%) brightness(260%) sepia(200%) hue-rotate(70deg) saturate(1000%) contrast(1);
+	transform: scale(1.1);
 }
