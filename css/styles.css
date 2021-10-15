@@ -110,12 +110,19 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 	letter-spacing: 0.1rem;
 }
 
+.plans, .about, .application, .blog{
+	padding: 3.75rem 0;
+}
+
 /*HEADER*/
+.header{
+	padding: 1.375rem 0;
+}
+
 .header > .container{
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
-	padding: 1.375rem 0;
+	align-items: center;	
 }
 
 .logo{
@@ -176,7 +183,6 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 /*PLANS*/
 .plans{
 	background-color: #191C20;
-	padding: 3.75rem 0;
 	text-align: center;
 }
 
@@ -223,8 +229,6 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 	grid-template-columns: 1fr 1fr;
 	align-items: center;
 	gap: 1.25rem;
-	padding: 3.75rem 0;
-	
 }
 
 .about-image{
@@ -266,7 +270,6 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 /*APPLICATION*/
 .application{
 	background-color: #191C20;
-	padding: 3.75rem 0;
 }
 
 .application > .container{
@@ -299,10 +302,6 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 }
 
 /*BLOG*/
-.blog{
-	padding: 3.75rem 0;
-}
-
 .blog .button-primary{
 	display: block;
 	margin: 0 auto;
