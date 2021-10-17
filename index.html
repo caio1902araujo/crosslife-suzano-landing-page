@@ -152,19 +152,25 @@
         <iframe src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d46448.50637767737!2d-46.32212485707368!3d-23.547232646161678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d-23.5499209!2d-46.306241299999996!5e0!3m2!1spt-BR!2sbr!4v1634167775414!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
       </section>
 
-      <section class="footer-info">
+      <section class="footer-info container">
         <div class="footer-contact">
           <h2 class="title">Envie a Sua Dúvida</h2>
           <form class="form-contact">
-            <label for="name">Nome</label>
-            <input type="text" id="name" name="name"/>
+            <div>
+              <label for="name">Nome</label>
+              <input type="text" id="name" name="name" placeholder="Seu nome"/>
+            </div>
 
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email"/>
+            <div>
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="exemplo@seudominio.com"/>
+            </div>
 
-            <label for="message">Mensagem</label>
-            <textarea id="message" name="message"></textarea>
-
+            <div>
+              <label for="message">Mensagem</label>
+              <textarea id="message" name="message" placeholder="Digite a sua mensagem aqui..."></textarea>
+            </div>
+            
             <button class="button button-secondary">Enviar</button>
           </form>
         </div>
@@ -180,16 +186,34 @@
           </ul> 
         </div>
 
+        <div class="footer-communication">
+          <h2 class="title">Meios de Contato</h2>
+          <ul class="communication">
+            <li>(11) 93039-6438</li>
+            <li>crosslife.figueira@gmail.com</li>
+            <li>R. Kaneji Kodama, 1232 - Vila Figueira, Suzano - SP, 08676-410</li>
+          </ul> 
+        </div>
+
         <div class="footer-social-network">
           <h2 class="title">Redes Socias</h2>
           <ul class="social-network">
-            <li><a href="https://www.instagram.com/crosslifefigueira/"><img src="./images/instagram.svg" alt="icone do instagram"></a></li>
-            <li><a href="https://www.facebook.com/CrossLifeFigueira/"><img src="./images/facebook.svg" alt="icone do facebook"></a></li>
+            <li>
+              <a href="https://www.instagram.com/crosslifefigueira/" target="_blank">
+                <img src="./images/instagram.svg" alt="icone do instagram">
+              </a>
+            </li>
+            
+            <li>
+              <a href="https://www.facebook.com/CrossLifeFigueira/" target="_blank">
+                <img src="./images/facebook.svg" alt="icone do facebook">
+              </a>
+            </li>
           </ul>
         </div>
       </section>
 
-      <section class="footer-copy">
+      <section class="footer-copy container">
         <a href="/" class="logo">Cross<span class="green">life</span></a>
         <p>FiveTech  2021 - Todos os direitos autorais</p>
       </section>
