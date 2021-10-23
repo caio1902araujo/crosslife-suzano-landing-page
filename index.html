@@ -14,7 +14,9 @@
       <div class="container">
         <h1 class="logo">Cross<span class="green">life</span></h1>
 
-        <nav class="navigation">
+        <button type="button" class='hamburger' data-menu="botao" aria-expanded='false' aria-controls='menu'></button>
+
+        <nav class="navigation" id="menu">
           <a href="#plans">Planos</a>
           <a href="#about">Sobre</a>
           <a href="#application">Aplicativo</a>
@@ -28,8 +30,10 @@
       <div class="container">
         <div>
           <h1 class="title">Crosslife está nas palmas das suas mãos agora</h1>
-          <a class="button button-primary" href="#application">Download</a>
-          <a class="button button-secondary" href="#plans">Ler mais</a>
+          <div class="group-buttons">
+            <a class="button button-primary" href="#application">Download</a>
+            <a class="button button-secondary" href="#plans">Ler mais</a>
+          </div>
         </div>
 
         <div class="cellphone">
@@ -50,7 +54,7 @@
               <li>vantagem 02</li>
             </ul>
             <p class="cash">R$ 69,00</p>
-            <a class="button button-secondary">Ver mais</a>
+            <a class="button button-secondary centralized-button">Ver mais</a>
           </li>
 
           <li>
@@ -60,7 +64,7 @@
               <li>vantagem 02</li>
             </ul>
             <p class="cash">R$ 69,00</p>
-            <a class="button button-secondary">Ver mais</a>
+            <a class="button button-secondary centralized-button">Ver mais</a>
           </li>
 
           <li>
@@ -70,7 +74,7 @@
               <li>vantagem 02</li>
             </ul>
             <p class="cash">R$ 69,00</p>
-            <a class="button button-secondary">Ver mais</a>
+            <a class="button button-secondary centralized-button">Ver mais</a>
           </li>
         </ul>
       </section>
@@ -104,8 +108,11 @@
             <p class="paragraph">
               Com o app  da crosslife você vai ter o controle da sua rotina de treino na palmas da sua mão. Nela você pode tirar duvidas com os instrutores, ver os treinos da semana e ficar atualizado com noticias sobre o mundo fitness.
             </p>
-            <a class="button button-primary">Google Play</a>
-            <a class="button button-secondary">App Store</a>
+
+            <div class="group-buttons">
+              <a class="button button-primary">Google Play</a>
+              <a class="button button-secondary">App Store</a>
+            </div>
           </div>
 
           <div class="application-image">
@@ -143,7 +150,7 @@
           </article>
         </div>
 
-        <a class="button button-primary">Leia mais</a>
+        <a class="button button-primary centralized-button">Leia mais</a>
       </section>
     </main>
 
