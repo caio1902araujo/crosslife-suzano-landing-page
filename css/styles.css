@@ -171,7 +171,7 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 	background-position: bottom;
 	background-size: contain;
 	height: 100vh;
-	overflow: hidden;
+	overflow-y: hidden;
 	display: flex;
 	align-items: center;
 }
@@ -625,7 +625,7 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 
 }
 
-@media(max-width: 500px){
+@media(max-width: 590px){
 	.introduction{
 		align-items: flex-start;
 		height: calc(100vh - 79px);
@@ -681,9 +681,10 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 	.application .button-secondary{
 		background-image: none;
 	}
-
 }
 
-@media (max-width: 425px){
-	
+@media (max-width: 300px){
+	.group-buttons{
+		grid-template-columns: repeat(1, minmax(8rem, 11.125rem));
+	}
 }
