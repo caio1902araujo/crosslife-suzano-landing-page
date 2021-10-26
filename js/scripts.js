@@ -11,7 +11,7 @@ function startScrollSmooth(){
     });
   }
 
-  internalLinks.forEach((link) => link.addEventListener("click", scrollSmooth))
+  internalLinks.forEach((link) => link.addEventListener("click", scrollSmooth));
 }
 
 function startClickOut(navigation, dataAttribute, removeActiveClass){
@@ -21,7 +21,7 @@ function startClickOut(navigation, dataAttribute, removeActiveClass){
     if(!navigation.contains(event.target)){
       html.removeEventListener('click', clickOut);
       html.removeAttribute(dataAttribute);
-      removeActiveClass()
+      removeActiveClass();
     }
   }
 
@@ -44,16 +44,40 @@ function startMobileMenu(){
   function handleClick(){
     this.classList.toggle('active');
     navigation.classList.toggle('active');
-    startClickOut(navigation, dataAttribute, removeActiveClass)
+    startClickOut(navigation, dataAttribute, removeActiveClass);
   }
 
   buttonHamburger.addEventListener('click', handleClick);
+}
+
+function startAnimatingScroll(){
+
+  function animatingItems(items){
+    items.forEach((item) => {
+      const time = Number(item.getAttribute("data-animation"));
+      setTimeout(() => item.classList.add('anime'), time);
+    });
+  }
+
+  function animatingScroll(){
+    const sections = document.querySelectorAll("[data-section]");
+    sections.forEach((section, index) => {
+      const top = section.getBoundingClientRect().top - (section.offsetTop * 0.2);
+      const items = section.querySelectorAll("[data-animation]");
+      if (top <= 0 || index === 0) {
+        animatingItems(items);
+      }
+    });
+  }
+  animatingScroll();
+  window.addEventListener('scroll', animatingScroll);
 }
 
 
 function init(){
   startScrollSmooth();
   startMobileMenu();
+  startAnimatingScroll();
 }
 
 init();
