@@ -171,7 +171,6 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 	background-position: bottom;
 	background-size: contain;
 	height: 100vh;
-	overflow-y: hidden;
 	display: flex;
 	align-items: center;
 }
@@ -189,7 +188,7 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 
 .cellphone{
 	position: relative;
-	z-index: -10;
+	z-index: -1;
 }
 
 /*PLANS*/
@@ -544,27 +543,59 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 @media(max-width: 760px){
 	.navigation{
 		display: none;
+		position: absolute;
+		background-color: #13161B;
+		top: 4.9rem;
+		right: 0;
+		padding: 0.375rem 0.625rem;
+		width: 12.5rem;
+		z-index: 200;
+		border-radius: 0.375rem;
+		box-shadow: 0 3px 4px 0 rgb(0 0 0 / 50%);
+	}
+
+	.navigation > a{
+		display: block;
+	}
+
+	.navigation > a ~ a{
+		margin-left: 0;
+		border-top: 1px solid #2a2d31;
 	}
 
 	.hamburger{
 		display: block;
 		border: none;
 		background: none;
+		cursor: pointer;
+		padding: 0;
+		width: 2.125rem;
 	}
 
-	.hamburger::after{
+	.hamburger::after,
+	.hamburger::before{
 		content: '';
 		display: block;
-		width: 1.5rem;
-		height: 0.125rem;
-		border-radius: 0.125rem;
+		width: 100%;
+		height: 0.1875rem;
 		background: #fff;
-		box-shadow: 0px 8px 0px #fff, 0px -8px 0px #fff;
+		position: relative;
+		transition: .3s;
+		border-radius: 0.375rem;
+	}
+
+	.hamburger::before{
+		background-color: #6BE067;
+		margin-bottom: 0.375rem;
+	}
+
+	.introduction{
+		align-items: flex-start;
+		height: calc(100vh - 79px);
 	}
 
 	.introduction > .container{
 		grid-template-columns: 1fr;
-		align-items: center;
 	}
 
 	.introduction .title{
@@ -626,11 +657,6 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 }
 
 @media(max-width: 590px){
-	.introduction{
-		align-items: flex-start;
-		height: calc(100vh - 79px);
-	}
-	
 	.footer-info.container, .footer-copy.container{
 		grid-template-columns: 1fr;
 	}
@@ -687,4 +713,34 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 	.group-buttons{
 		grid-template-columns: repeat(1, minmax(8rem, 11.125rem));
 	}
+}
+
+/*ANIMATIONS*/
+@keyframes show-right{
+  from{
+    opacity: 0;
+    transform: translate3d(-28px, 0, 0);
+  }
+  to{
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+
+}
+
+
+/*STYLES FOR JS*/
+[data-menu="button"].active::before{
+ transform: rotate(135deg);
+ margin-bottom: 0;
+ top: 2px;
+}
+
+[data-menu="button"].active::after{
+	transform: rotate(45deg);
+}
+
+[data-menu="navigation"].active{
+	display: block;
+	animation: show-right .5s forwards;
 }
