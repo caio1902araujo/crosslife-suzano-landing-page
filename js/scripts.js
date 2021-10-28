@@ -62,7 +62,7 @@ function startAnimatingScroll(){
   function animatingScroll(){
     const sections = document.querySelectorAll("[data-section]");
     sections.forEach((section, index) => {
-      const top = section.getBoundingClientRect().top - (section.offsetTop * 0.2);
+      const top = section.getBoundingClientRect().top - (section.offsetTop * 0.3);
       const items = section.querySelectorAll("[data-animation]");
       if (top <= 0 || index === 0) {
         animatingItems(items);
@@ -74,10 +74,128 @@ function startAnimatingScroll(){
 }
 
 
+function startSlide(){
+  const slide = document.querySelector("[data-slide='slide']");
+  const wrapper = document.querySelector("[data-slide='wrapper']");
+  const buttonPrev = document.querySelector("[data-slide='previous']");
+  const buttonNext = document.querySelector("[data-slide='next']");
+  const dist = {startX: 0, finalPosition: 0, movement: 0, movePosition: 0};
+  let itemsSlide;
+  let mapIndex;
+
+  function addingTransition(active){
+    slide.style.transition = active ? "transform .3s" : ""
+  }
+
+  function slidesConfig(){
+    itemsSlide = [...slide.children].map((item) => {
+      const margin = (wrapper.offsetWidth - item.offsetWidth) / 2
+      const position = -(item.offsetLeft - margin);
+      return {position, item}
+    });
+  }
+
+  function moveSlide(distX){
+    dist.movePosition = distX;
+    slide.style.transform = `translate3d(${distX}px, 0, 0)`;
+  }
+
+  function updatePosition(clientX){
+    dist.movement = dist.startX - clientX;
+    return dist.finalPosition - dist.movement;
+  }
+
+  function onMove(event){
+    const pointerPosition = (event.type === "mousemove") ? event.clientX : event.changedTouches[0].clientX;
+    const finalPosition = updatePosition(pointerPosition);
+    moveSlide(finalPosition);
+  }
+
+  function onStart(event){
+    event.preventDefault();
+    let eventMove;
+    if (event.type === "mousedown"){
+      dist.startX = event.clientX;
+      eventMove = "mousemove";
+    }
+    else{
+      dist.startX = event.changedTouches[0].clientX;
+      eventMove = "touchmove";
+    }
+    this.addEventListener(eventMove, onMove);
+    addingTransition(false);
+  }
+
+  function onEnd(event){
+    const eventMove = (event.type === "mouseup") ? "mousemove" : "touchmove";
+    this.removeEventListener(eventMove, onMove);
+    dist.finalPosition = dist.movePosition;
+    addingTransition(true);
+    changeSlideOnEnd();
+  }
+
+  function slideIndexNav(index){
+    const last = itemsSlide.length - 1;
+    mapIndex = {
+      prev: index ? index - 1 : undefined,
+      active: index,
+      next: index === last ? undefined : index + 1
+    }
+  }
+
+  function activePrevSlide(){
+    if (mapIndex.prev !== undefined) changeSlide(mapIndex.prev);
+  }
+
+  function activeNextSlide(){
+    if (mapIndex.next !== undefined) changeSlide(mapIndex.next);
+  }
+
+  function changeSlideOnEnd(){
+    if(dist.movement > 120 && mapIndex.next !== undefined){
+      activeNextSlide();
+    }
+    else if(dist.movement < -120 && mapIndex.prev !== undefined){
+      activePrevSlide();
+    }
+    else{
+      changeSlide(mapIndex.active);
+    }
+  }
+
+  function changeSlide(index){
+    const activeSlide = itemsSlide[index];
+    addingTransition(true);
+    moveSlide(activeSlide.position);
+    slideIndexNav(index);
+    dist.finalPosition = activeSlide.position;
+  }
+
+  function onResize(){
+    setTimeout(()=>{
+      slidesConfig();
+      changeSlide(mapIndex.active);
+    }, 100)
+  }
+
+  window.addEventListener('resize', onResize)
+  slide.addEventListener('mousedown', onStart);
+  slide.addEventListener('touchstart', onStart);
+  slide.addEventListener('mouseup', onEnd);
+  slide.addEventListener('touchend', onEnd);
+  buttonPrev.addEventListener('click', activePrevSlide);
+  buttonNext.addEventListener('click', activeNextSlide);
+  slidesConfig();
+  slideIndexNav(0);
+  
+}
+
+
 function init(){
   startScrollSmooth();
   startMobileMenu();
   startAnimatingScroll();
+  startSlide();
 }
 
 init();

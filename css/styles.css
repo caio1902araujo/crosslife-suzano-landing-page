@@ -243,17 +243,21 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 }
 
 .about-image{
-	position: relative;
+	
+	overflow-x: hidden;
+	background: url('../images/shape-bg.svg') no-repeat top center;
+	background-size: contain;
 }
 
 .images-crosslife{
-	background: url('../images/shape-bg.svg') no-repeat top center;
-	background-size: contain;
+	position: relative;
 	padding: 6.25rem 1.25rem;
+	display: flex;
 }
 
 .images-crosslife > img{
 	border-radius: 0.375rem;
+	margin-right: 1.25rem;
 }
 
 .buttons{
@@ -528,6 +532,10 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 
 	.images-crosslife{
 		padding: 3.75rem 1.25rem;
+	}
+
+	.buttons{
+		bottom: 2.5rem;
 	}
 
 	.application-image{
