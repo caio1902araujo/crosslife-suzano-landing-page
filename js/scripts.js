@@ -226,6 +226,7 @@ function startSendQuestion(){
       
       if(response.ok){
         window.alert("Seu email foi enviado");
+        Object.keys(formDate).forEach(key => form.querySelector(`#${key}`).value = '');
       }
     }
   }
