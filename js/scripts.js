@@ -250,4 +250,4 @@ function init(){
   startSendQuestion();
 }
 
-init();
+window.addEventListener("load", init);
