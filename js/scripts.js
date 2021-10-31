@@ -73,7 +73,6 @@ function startAnimatingScroll(){
   window.addEventListener('scroll', animatingScroll);
 }
 
-
 function startSlide(){
   const slide = document.querySelector("[data-slide='slide']");
   const wrapper = document.querySelector("[data-slide='wrapper']");
@@ -187,15 +186,68 @@ function startSlide(){
   buttonNext.addEventListener('click', activeNextSlide);
   slidesConfig();
   slideIndexNav(0);
-  
 }
 
+function startValidate(formField){
+  const types = {
+    email:{
+      regex: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+      message: 'Preencha um email válido',
+    }
+  }
+
+  if(formField.value.length === 0){
+    formField.nextElementSibling.textContent = "Preencha esse campo";
+    return false;
+  }
+  if(types[formField.type] && !types[formField.type].regex.test(formField.value)){
+    formField.nextElementSibling.textContent = types[formField.type].message;
+    return false;
+  }
+  return true;
+}
+
+function startSendQuestion(){
+  const form = document.querySelector("#form-contact");
+  const formDate = {name: "", email: "", message:""};
+
+  async function sendQuestion(event){
+    event.preventDefault();
+    const isValid = Object.keys(formDate).reduce((accumulator, key) =>{
+      return accumulator += (startValidate(form.querySelector(`#${key}`))) ? 1 : 0 ;
+    }, 0)
+    
+    if(isValid === Object.keys(formDate).length){
+      const response = await fetch(`http://127.0.0.1:5000/enviar-duvida`, {
+        method: 'POST',
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(formDate),
+      });
+      
+      if(response.ok){
+        window.alert("Seu email foi enviado");
+      }
+    }
+  }
+  
+  function handleChange(event) {
+    const formField = event.target;
+    if (startValidate(formField)){
+      formDate[formField.name] = formField.value;
+      formField.nextElementSibling.textContent = "";
+    }
+  }
+
+  form.addEventListener("change", handleChange);
+  form.addEventListener("submit", sendQuestion);
+}
 
 function init(){
   startScrollSmooth();
   startMobileMenu();
   startAnimatingScroll();
   startSlide();
+  startSendQuestion();
 }
 
 init();

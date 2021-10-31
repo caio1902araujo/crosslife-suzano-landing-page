@@ -437,6 +437,11 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 	padding-left: 3.75rem;
 }
 
+.erro{
+	color: #d93025;
+	font-size: 0.75rem;
+}
+
 .communication{
 	max-width: 300px;
 }
