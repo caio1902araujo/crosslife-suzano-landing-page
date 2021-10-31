@@ -100,9 +100,7 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 }
 
 .button-primary:hover,
-.button-primary:focus,
-.button-secondary:hover,
-.button-secondary:focus
+.button-secondary:hover
 {
 	outline: none;
 	transform: scale(1.1);
