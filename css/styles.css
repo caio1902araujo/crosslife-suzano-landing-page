@@ -58,6 +58,15 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 	line-height: 0.9;
 }
 
+.linkOverlay {
+	position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
 .paragraph{
 	font-size: 1.125rem;
 	color: #B0B2B3;
@@ -107,6 +116,9 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 }
 
 .name{
+	position: relative;
+	z-index: 5;
+	font-weight: bold;
 	color: #6BE067;
 }
 
@@ -116,6 +128,11 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 	font-size: 0.75rem;
 	color: #6BE067;
 	letter-spacing: 0.1rem;
+}
+
+.name:hover,
+.category:hover{
+	text-decoration: underline;
 }
 
 .plans, .about, .application, .blog{
@@ -332,20 +349,34 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 }
 
 .news{
-	padding: 1rem 1rem 0.625rem 1rem;
-	border: 2px solid #FFFFFF;
+	padding: 1.5rem;
+  height: 16.25rem;
+	background-color: #191C20;
 	border-radius: 0.375rem;
+	position: relative;
+	transition: transform 0.4s ease;
+}
+
+.news:hover{
+ transform: translateY(-10px);
 }
 
 .news > h4{
 	font-size: 1.25rem;
 	font-weight: bold;
 	margin-bottom: 0.375rem;
+	-webkit-line-clamp: 3;
 }
 
 .news > p{
 	font-size: 0.875rem;
 	margin-bottom: 2.5rem;
+}
+
+.news > .category{
+	position: absolute;
+	z-index: 5;
+	bottom: 22px
 }
 
 /*FOOTER*/
@@ -502,6 +533,27 @@ h1, h2, h3, h4, h5, h6, p, a, ul {
 
 .footer-copy > p{
 	font-size: 0.875rem;
+}
+
+/*WARNING*/
+.warningWrapper{
+	margin: 0px auto;
+  max-width: 35rem;
+}
+
+.warningImage{
+  margin: 0px auto;
+  width: 100px;
+}
+
+.warningTitle{
+  font-size: 1.5rem;
+	text-align: center;
+  margin: 1.875rem 0 0.5rem;
+}
+
+.warningDescription{
+  text-align: center;
 }
 
 /*MEDIA QUERIES*/

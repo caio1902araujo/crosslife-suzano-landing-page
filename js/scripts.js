@@ -1,3 +1,5 @@
+const baseUrl = 'https://crosslife-api.herokuapp.com';
+
 function startScrollSmooth(){
   const internalLinks = document.querySelectorAll("a[href^='#']");
 
@@ -50,8 +52,8 @@ function startMobileMenu(){
   buttonHamburger.addEventListener('click', handleClick);
 }
 
-function startAnimatingScroll(){
 
+function startAnimatingScroll(){
   function animatingItems(items){
     items.forEach((item) => {
       const time = Number(item.getAttribute("data-animation"));
@@ -243,12 +245,64 @@ function startSendQuestion(){
   form.addEventListener("submit", sendQuestion);
 }
 
+async function startLatestNews(){
+  const containerArticle = document.querySelector('[data-container="articles"]');
+  
+  try{
+    const response = await fetch(`${baseUrl}/news?limit=4`);
+
+    if(response.ok){
+      const dataNews = await response.json();
+      const [articles] = dataNews;
+      articles.forEach((article)=>{
+        containerArticle.innerHTML += `
+          <article class="news">
+            <a href="/" class='linkOverlay'></a>
+            <h4>${article.title}</h4>
+            <p>por <a href="/" class="name">${article.author.name}</a> há 4 horas</p>
+            <a href="/" class="category">${article.category}</a>
+          </article>
+        `;
+      });
+    }
+    else{
+      containerArticle.style.display = 'block';
+      containerArticle.innerHTML += `
+          <div class='warningWrapper'>
+            <div class='warningImage'>
+              <img src="../images/error.svg" alt="imagem de erro"/>
+            </div>
+            <h2 class='warningTitle'>Erro ao carregar as notícias</h2>
+            <p class='warningDescription'>
+              Infelizmente não conseguimos carregar todo o conteúdo, por favor tente novamente mais tarde ou recarregue a página
+            </p>
+          </div>
+        `;
+    }
+  }
+  catch(e){
+    containerArticle.style.display = 'block';
+    containerArticle.innerHTML += `
+      <div class='warningWrapper'>
+        <div class='warningImage'>
+          <img src="../images/error.svg" alt="imagem de erro"/>
+        </div>
+        <h2 class='warningTitle'>Erro ao carregar as notícias</h2>
+        <p class='warningDescription'>
+          Infelizmente não conseguimos carregar todo o conteúdo, por favor tente novamente mais tarde ou recarregue a página
+        </p>
+      </div>
+    `;
+  }
+}
+
 function init(){
   startScrollSmooth();
   startMobileMenu();
   startAnimatingScroll();
   startSlide();
   startSendQuestion();
+  startLatestNews();
 }
 
 window.addEventListener("load", init);
