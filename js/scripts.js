@@ -211,7 +211,7 @@ function startValidate(formField){
 
 function startSendQuestion(){
   const form = document.querySelector("#form-contact");
-  const formDate = {name: "", email: "", message:""};
+  const formDate = {name: "", email: "", question:""};
 
   async function sendQuestion(event){
     event.preventDefault();
@@ -220,7 +220,7 @@ function startSendQuestion(){
     }, 0)
     
     if(isValid === Object.keys(formDate).length){
-      const response = await fetch(`https://crosslifeapi.herokuapp.com/enviar-duvida`, {
+      const response = await fetch(`${baseUrl}/question`, {
         method: 'POST',
         headers:{'Content-Type': 'application/json'},
         body: JSON.stringify(formDate),
