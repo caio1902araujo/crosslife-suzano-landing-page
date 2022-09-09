@@ -1,4 +1,5 @@
-const baseUrl = 'https://crosslife-api.herokuapp.com';
+const baseUrlApi = 'https://crosslife-api.herokuapp.com';
+const baseUrlBlog = ''
 
 function startScrollSmooth(){
   const internalLinks = document.querySelectorAll("a[href^='#']");
@@ -51,7 +52,6 @@ function startMobileMenu(){
 
   buttonHamburger.addEventListener('click', handleClick);
 }
-
 
 function startAnimatingScroll(){
   function animatingItems(items){
@@ -220,7 +220,7 @@ function startSendQuestion(){
     }, 0)
     
     if(isValid === Object.keys(formDate).length){
-      const response = await fetch(`${baseUrl}/question`, {
+      const response = await fetch(`${baseUrlApi}/question`, {
         method: 'POST',
         headers:{'Content-Type': 'application/json'},
         body: JSON.stringify(formDate),
@@ -249,7 +249,7 @@ async function startLatestNews(){
   const containerArticle = document.querySelector('[data-container="articles"]');
   
   try{
-    const response = await fetch(`${baseUrl}/news?limit=4`);
+    const response = await fetch(`${baseUrlApi}/news?limit=4`);
 
     if(response.ok){
       const dataNews = await response.json();
@@ -257,7 +257,7 @@ async function startLatestNews(){
       articles.forEach((article)=>{
         containerArticle.innerHTML += `
           <article class="news">
-            <a href="/" class='linkOverlay'></a>
+            <a href="/"  class="link-overlay"></a>
             <h4>${article.title}</h4>
             <p>por <a href="/" class="name">${article.author.name}</a> há 4 horas</p>
             <a href="/" class="category">${article.category}</a>
@@ -268,12 +268,12 @@ async function startLatestNews(){
     else{
       containerArticle.style.display = 'block';
       containerArticle.innerHTML += `
-          <div class='warningWrapper'>
-            <div class='warningImage'>
+          <div class="warning-wrapper">
+            <div class="warning-image">
               <img src="../images/error.svg" alt="imagem de erro"/>
             </div>
-            <h2 class='warningTitle'>Erro ao carregar as notícias</h2>
-            <p class='warningDescription'>
+            <h2 class="warning-title">Erro ao carregar as notícias</h2>
+            <p class="warning-description">
               Infelizmente não conseguimos carregar todo o conteúdo, por favor tente novamente mais tarde ou recarregue a página
             </p>
           </div>
@@ -283,12 +283,12 @@ async function startLatestNews(){
   catch(e){
     containerArticle.style.display = 'block';
     containerArticle.innerHTML += `
-      <div class='warningWrapper'>
-        <div class='warningImage'>
+      <div class="warning-wrapper">
+        <div class="warning-image">
           <img src="../images/error.svg" alt="imagem de erro"/>
         </div>
-        <h2 class='warningTitle'>Erro ao carregar as notícias</h2>
-        <p class='warningDescription'>
+        <h2 class="warning-title">Erro ao carregar as notícias</h2>
+        <p class="warning-description">
           Infelizmente não conseguimos carregar todo o conteúdo, por favor tente novamente mais tarde ou recarregue a página
         </p>
       </div>
