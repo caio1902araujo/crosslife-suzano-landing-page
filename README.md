@@ -1,6 +1,8 @@
 # Landing Page Crosslife Suzano
 
-A Landing Page da Crosslife é um projeto que será desenvolvido para web, voltado para divulgação tanto da imagem como das informações da academia, e também vai ser utilizado para o trabalho de conclusão de curso da faculdade IMPACTA.
+A Landing Page da Crosslife é um projeto que será desenvolvido para web, voltado para divulgação tanto da imagem como das informações da academia, e também vai ser utilizado para o trabalho de conclusão de curso da faculdade IMPACTA. Para vizualizar o layout com detalhes no figma é so clicar [aqui](https://www.figma.com/file/2J5eGRcnUXfAAkO2UrsdLB/Landing-page-crossllife?node-id=15%3A6)
+
+![layout](/images/layout.png)
 
 ## Landing Page
 
@@ -63,9 +65,3 @@ cd crosslife-suzano-landing-page
 # Abrindo arquivo html:
 xdg-open index.html
 ```
-
-## Layout
-
-O layout foi feito inteiramente no [figma](https://www.figma.com/file/2J5eGRcnUXfAAkO2UrsdLB/Landing-page-crossllife?node-id=15%3A6)
-
-![layout](/images/layout.png)
